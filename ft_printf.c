@@ -3,35 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joafern2 <joafern2@student.42lisboa.c      +#+  +:+       +#+        */
+/*   By: waterz <waterz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:47:42 by joafern2          #+#    #+#             */
-/*   Updated: 2024/05/16 19:41:17 by joafern2         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:13:17 by waterz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdarg.h>
+
+int	len_putchar(char c);
+int len_putstr(char *s);
+int len_putnbr(long n);
+int	ft_strlen(char *string);
 
 int	print_format(va_list args, const char c)
 {
+	int len;
+
+	len = 0;
 	if (c == 'c')
-		//ft_putchar_fd(va_arg(args, char), 1);
+		len = len_putchar(va_arg(args, int));
 	else if (c == 's')
-		//ft_putstr_fd(va_arg(args, char *), 1);
+		len = len_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		
-	else if (c == 'd' || c = 'i')
-		//ft_putnbr_fd(va_arg(args, int), 1);
+		return 0;
+	else if (c == 'd' || c == 'i')
+		len = len_putnbr(va_arg(args, int));
 	else if (c == 'u')
+		return 0;
 		//ft_putnbr_fd(va_arg(args, unsigned int), 1);
 	else if (c == 'X')
+		return 0;
 		//ft_putnbr_base(va_ar(args, int), "0123456789ABCDEF");
 	else if (c == 'x')
+		return 0;
 		//ft_putnbr_base(va_ar(args, int), "0123456789abcdef");
 	else if (c == '%')
-		//ft_putchar_fd("%", 1);
-	return (0);
+		len = len_putchar('%');
+	return (len);
 }
 
 int	ft_printf(const char *string, ...)
@@ -45,13 +55,21 @@ int	ft_printf(const char *string, ...)
 	len = 0;
 	i = 0;
 	va_start(args, string);
-	while (string[i++])
+	while (string[i])
 	{
-		if (string[i] == "%")
-			len =+ print_format(args, string[i++ + 1]);
+		if (string[i] == '%')
+			len += print_format(args, string[i++ + 1]);
 		else 
-			len += ft_putchar_fd(string[i], 1);
+			len += len_putchar(string[i]);
+		i++;
 	}
 	va_end(args);
 	return (len);
+}
+
+int main(){
+	ft_printf("char: %c \nstring: %s\ninteger: %d\npercentage sign: %%\n", 'A', "Hello World", 42);
+	ft_printf("%s\n", "Hello World");
+	ft_printf("%d\n", 42);
+	ft_printf("%%\n");
 }
