@@ -6,7 +6,7 @@
 /*   By: waterz <waterz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:47:42 by joafern2          #+#    #+#             */
-/*   Updated: 2024/05/17 22:13:17 by waterz           ###   ########.fr       */
+/*   Updated: 2024/05/17 22:15:08 by waterz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int len_putstr(char *s);
 int len_putnbr(long n);
 int	ft_strlen(char *string);
 
-int	print_format(va_list args, const char c)
+static int	print_format(va_list args, const char c)
 {
 	int len;
 
