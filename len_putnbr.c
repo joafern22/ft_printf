@@ -29,32 +29,36 @@ static int	int_len(long nbr)
 	return (len);
 }
 
-int	len_putnbr(long nbr)
+int	len_putnbr(int nbr, char format)
 {
 	int	len;
+	unsigned int u;
 	
 	len = int_len(nbr);
+	if (format == 'u')
+		nbr = (unsigned int)(nbr);
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
-		nbr = -nbr;
+		u = -nbr;
 	}
 	else if (nbr == 0)
 	{
 		write(1, "0", 1);
 		return (1);
 	}
-	if (nbr > 9)
+	if (nbr > 0)
+		u = nbr;
+	if (u > 9)
 	{
-		len_putnbr(nbr / 10);
-		write_nbr(nbr % 10);
+		len_putnbr(u / 10, format);
+		write_nbr(u % 10);
 	}
-	else if (nbr > 0)
-		write_nbr(nbr);
+	else if (u > 0)
+		write_nbr(u);
 	return (len);
 }
 /*
 int main(){
-	printf("%d\n", len_putnbr(-2147483648));
-}
-*/
+	printf("%d\n", len_putnbr(-2147483648, 'c'));
+}*/
