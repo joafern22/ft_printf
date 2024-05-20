@@ -26,9 +26,9 @@ int     len_putnbr_hexa(int nbr, char format)
     int len;
 
     len = 0;
-	base = "0123456789ABCDEF";
-    if (format == 'x')
-        base = "0123456789abcdef";
+	base = "0123456789abcdef";
+    if (format == 'X')
+        base = "0123456789ABCDEF";
 	if (nbr < 0)
 	{
 		write (1, "-", 1);
