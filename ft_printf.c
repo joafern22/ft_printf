@@ -6,7 +6,7 @@
 /*   By: waterz <waterz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:47:42 by joafern2          #+#    #+#             */
-/*   Updated: 2024/05/21 20:16:56 by waterz           ###   ########.fr       */
+/*   Updated: 2024/05/21 20:24:36 by waterz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int len_putstr(char *s);
 int len_putnbr(long n, char format);
 int len_putnbr_unsigned(unsigned int);
 int	len_putnbr_hexa(int nbr, char format);
-int len_ptr(void *ptr);
+int len_putptr(void *ptr);
 int	ft_strlen(char *string);
 
 static int	print_format(va_list args, const char c)
@@ -31,7 +31,7 @@ static int	print_format(va_list args, const char c)
 	else if (c == 's')
 		len = len_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		len = len_ptr(va_arg(args, void *));
+		len = len_putptr(va_arg(args, void *));
 	else if (c == 'd' || c == 'i')
 		len = len_putnbr(va_arg(args, int), c);
 	else if ( c == 'u')
