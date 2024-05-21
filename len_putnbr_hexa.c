@@ -1,16 +1,14 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int	ft_tolower(int c);
-
-static int	write_nbr(unsigned int nbr, char *base)
+static int	write_hexa(unsigned int nbr, char *base)
 {
 	int len;
 
 	len = 0;
 	if (nbr >= 16)
 	{
-		len = write_nbr (nbr / 16, base);
+		len = write_hexa(nbr / 16, base);
 		write (1, &base[nbr % 16], 1);
 	}
 	else if (nbr < 16)
@@ -43,7 +41,7 @@ int     len_putnbr_hexa(int nbr, char format)
         return (1);
     }
 	else if (u > 0)
-		len += write_nbr (u, base);
+		len += write_hexa(u, base);
     return (len);
 }
 /*
