@@ -29,7 +29,7 @@ static int	int_len(long nbr)
 	return (len);
 }
 
-int	len_putnbr(int nbr, char format)
+int	len_putnbr(int nbr)
 {
 	int	len;
 	unsigned int u;
@@ -49,7 +49,7 @@ int	len_putnbr(int nbr, char format)
 		u = nbr;
 	if (u > 9)
 	{
-		len_putnbr(u / 10, format);
+		len_putnbr(u / 10);
 		write_nbr(u % 10);
 	}
 	else if (u > 0)
