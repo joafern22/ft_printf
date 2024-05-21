@@ -1,6 +1,14 @@
 #include <unistd.h>
 
-int	ft_strlen(char *string);
+static int	ft_strlen(const char *s)
+{
+	int	count;
+
+	count = 0;
+	while (s[count])
+		count++;
+	return (count);
+}
 
 int	len_putstr(char *s)
 {
