@@ -1,5 +1,16 @@
-#include <unistd.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   len_putnbr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joafern2 <joafern2@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/22 17:46:57 by joafern2          #+#    #+#             */
+/*   Updated: 2024/05/22 18:54:37 by joafern2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
 
 static void	write_nbr(int n)
 {
@@ -31,9 +42,9 @@ static int	int_len(long nbr)
 
 int	len_putnbr(int nbr)
 {
-	int	len;
-	unsigned int u;
-	
+	int				len;
+	unsigned int	u;
+
 	len = int_len(nbr);
 	if (nbr < 0)
 	{

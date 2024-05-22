@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   len_putstr.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joafern2 <joafern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 17:44:01 by joafern2          #+#    #+#             */
-/*   Updated: 2024/05/22 20:56:33 by joafern2         ###   ########.fr       */
+/*   Created: 2024/05/22 17:59:36 by joafern2          #+#    #+#             */
+/*   Updated: 2024/05/22 20:55:52 by joafern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-static int	ft_strlen(const char *s)
-{
-	int	count;
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdio.h>
 
-	count = 0;
-	while (s[count])
-		count++;
-	return (count);
-}
-
-int	len_putstr(char *s)
-{
-	int	len;
-
-	if (!s)
-		s = "(null)";
-	len = ft_strlen(s);
-	write (1, s, len);
-	return (len);
-}
-/*
-int	main(){
-	len_putstr("Hello World");
-}*/
+int	ft_printf(const char *string, ...);
+int	len_putchar(char c);
+int	len_putstr(char *s);
+int	len_putnbr(int n);
+int	len_putnbr_unsigned(unsigned int nbr);
+int	len_putnbr_hexa(unsigned int nbr, char format);
+int	len_putptr(void *ptr);
+#endif
